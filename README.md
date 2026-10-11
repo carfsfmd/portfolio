@@ -1,4 +1,4 @@
-# Carlos Diogo — Portfolio
+# Carlos Diogo - Portfolio
 
 This repository contains the personal portfolio of Carlos Diogo, a software
 engineering student based in Porto, Portugal.
