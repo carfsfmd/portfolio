@@ -1,0 +1,88 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 0 0;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.nav__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 16px 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: min(260px, 100%);
+}
+
+.nav__brand-name {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.nav__brand-role {
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+}
+
+.nav__pages {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 3px 11px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--ink);
+  border-color: var(--line);
+  background: var(--surface);
+}
+
+.nav__link--active {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line));
+  background: var(--accent-soft);
+}
+
+.nav__link--active::before {
+  color: var(--accent);
+}
+
+@media (max-width: 620px) {
+  .nav__row {
+    align-items: flex-start;
+  }
+
+  .nav__pages {
+    width: 100%;
+  }
+}
