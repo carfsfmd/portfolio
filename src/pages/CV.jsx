@@ -323,8 +323,33 @@ export function repoPath(repo) {
   return repo ? repo.replace('https://github.com/', '') : null
 }
 
+function DownloadIcon({ compact = false }) {
+  return (
+    <svg
+      className="cv-download__icon"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {compact ? (
+        <>
+          <path d="M7 8.5h10v10H7zM9 8.5V6h6v2.5M10 11.5h4M10 15.5h4" />
+          <path d="M9 18.5h6" />
+        </>
+      ) : (
+        <>
+          <path d="M5.5 3.5h9l4 4v13h-13zM14.5 3.5v4h4" />
+          <path d="M8 14.5h2.5M8 17h2.5M13 14.5h2.5M13 17h2.5" />
+          <path d="M8 11h7" />
+        </>
+      )}
+    </svg>
+  )
+}
+
 export default function CV() {
   const [openId, setOpenId] = useState(null)
+  const cvBase = `${import.meta.env.BASE_URL}media/cv/`
 
   const openProps = (id) => ({
     open: openId === id,
@@ -334,7 +359,29 @@ export default function CV() {
   return (
     <section className="cv-page">
       <header className="cv-page__head">
-        <h1 className="cv-page__title">CV</h1>
+        <div className="cv-page__title-row">
+          <h1 className="cv-page__title">CV</h1>
+          <div className="cv-downloads" aria-label="Download CV">
+            <a
+              className="cv-download"
+              href={`${cvBase}curriculum_vitae.pdf`}
+              download="Carlos-Diogo-CV.pdf"
+              title="Download full CV"
+              aria-label="Download full CV"
+            >
+              <DownloadIcon />
+            </a>
+            <a
+              className="cv-download"
+              href={`${cvBase}curriculum_vitae_compact.pdf`}
+              download="Carlos-Diogo-CV-compact.pdf"
+              title="Download compact CV"
+              aria-label="Download compact CV"
+            >
+              <DownloadIcon compact />
+            </a>
+          </div>
+        </div>
         <p className="cv-page__lead">
           A concise overview of my experience, projects, education and continued development.
         </p>
